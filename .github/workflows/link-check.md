@@ -3,7 +3,8 @@ on:
   schedule:
     - cron: "0 9 * * 1"
 
-permissions: {}
+permissions:
+  copilot-requests: write
 
 engine: copilot
 
