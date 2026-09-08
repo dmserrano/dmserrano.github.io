@@ -8,10 +8,10 @@ export const siteConfig = {
   title: 'Dominic Serrano',
   shortTitle: 'dmserrano',
   author: 'Dominic Serrano',
-  role: 'software developer',
+  role: 'software developer / dog lover / coffee enthusiast',
   url: 'https://dominicserrano.com',
   description:
-    '9+ years shipping production software, React and TypeScript at the core — 4 of them at FortyAU, most recently building real AI agent workflows. Now focused on engineering systems where LLMs are a dependable part of the architecture.',
+    "I'm a curious builder who first fell in love with JavaScript. Now I'm pushing the boundaries of what I can build.",
   socials: {
     github: { url: 'https://github.com/dmserrano', label: 'GitHub', icon: 'github' },
     linkedin: { url: 'https://www.linkedin.com/in/dominic-serrano/', label: 'LinkedIn', icon: 'linkedin' },

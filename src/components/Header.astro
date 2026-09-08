@@ -11,10 +11,13 @@ const navLinks = [
 
 <header class="site-header">
   <div class="container nav">
-    <a class="brand" href="/">
-      <span aria-hidden="true">&gt;</span> {siteConfig.shortTitle}
-      <span>_</span>
-    </a>
+    <div class="brand-wrap">
+      <a class="brand" href="/">
+        <span aria-hidden="true">&gt;</span> {siteConfig.shortTitle}
+      </a>
+      <button class="brand-cursor" type="button" aria-label="psst">_</button>
+      <span class="brand-egg" id="brand-egg"></span>
+    </div>
     <nav aria-label="Main">
       <ul class="nav-links">
         {
@@ -33,3 +36,24 @@ const navLinks = [
     </nav>
   </div>
 </header>
+
+<script>
+  const lines = [
+    'still compiling dad jokes...',
+    'fueled by coffee ☕',
+    'good boy detected 🐕',
+    '99 bugs in the code, 99 bugs...',
+    'now pushing boundaries (and belly rubs)',
+  ];
+  const btn = document.querySelector<HTMLButtonElement>('.brand-cursor');
+  const egg = document.getElementById('brand-egg');
+  let hideTimer: ReturnType<typeof setTimeout>;
+
+  btn?.addEventListener('click', () => {
+    if (!egg) return;
+    egg.textContent = lines[Math.floor(Math.random() * lines.length)];
+    egg.classList.add('show');
+    clearTimeout(hideTimer);
+    hideTimer = setTimeout(() => egg.classList.remove('show'), 2400);
+  });
+</script>
