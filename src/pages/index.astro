@@ -1,8 +1,9 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import PostCard from '../components/PostCard.astro';
 import { excludeDrafts } from '../lib/drafts';
-import { entrySlug } from '../lib/slugify';
 import { siteConfig } from '../lib/site';
 
 const posts = excludeDrafts(await getCollection('posts')).sort(
@@ -11,14 +12,11 @@ const posts = excludeDrafts(await getCollection('posts')).sort(
 ---
 
 <BaseLayout title="Home" description={siteConfig.description}>
-  <ul class="post-list">
-    {posts.map((post) => (
-      <li>
-        <a href={`/posts/${entrySlug(post.id, post.data.slug)}/`}>{post.data.title}</a>
-        <time datetime={post.data.date.toISOString()}>
-          {post.data.date.toISOString().slice(0, 10)}
-        </time>
-      </li>
-    ))}
-  </ul>
+  <Hero />
+  <div class="container section">
+    <h2 class="section-heading">Posts</h2>
+    <div class="post-list">
+      {posts.map((post) => <PostCard post={post} />)}
+    </div>
+  </div>
 </BaseLayout>

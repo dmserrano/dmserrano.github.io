@@ -1,8 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostCard from '../../components/PostCard.astro';
 import { excludeDrafts } from '../../lib/drafts';
-import { entrySlug } from '../../lib/slugify';
 
 export async function getStaticPaths() {
   const posts = excludeDrafts(await getCollection('posts'));
@@ -22,15 +22,10 @@ const { tag, posts } = Astro.props;
 ---
 
 <BaseLayout title={`Tag: ${tag}`} description={`Posts tagged ${tag}`}>
-  <h1>Tag: {tag}</h1>
-  <ul class="post-list">
-    {posts.map((post) => (
-      <li>
-        <a href={`/posts/${entrySlug(post.id, post.data.slug)}/`}>{post.data.title}</a>
-        <time datetime={post.data.date.toISOString()}>
-          {post.data.date.toISOString().slice(0, 10)}
-        </time>
-      </li>
-    ))}
-  </ul>
+  <div class="container section">
+    <h1>Tag: {tag}</h1>
+    <div class="post-list">
+      {posts.map((post) => <PostCard post={post} />)}
+    </div>
+  </div>
 </BaseLayout>
