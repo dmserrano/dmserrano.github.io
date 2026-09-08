@@ -14,6 +14,7 @@ const { avatar } = Astro.props;
     <div>
       <p class="hero-greeting">Hi, I'm</p>
       <h1>{siteConfig.author}</h1>
+      <p class="hero-role">{siteConfig.role}</p>
       <p class="hero-bio">{siteConfig.description}</p>
       <div class="social-row">
         {Object.values(siteConfig.socials).map((s) => (
