@@ -1,0 +1,33 @@
+name: New post
+description: Rough notes for a new blog post. Add the "post" label when ready for the draft-post workflow to pick it up.
+title: "[post] "
+labels:
+  - wip
+body:
+  - type: input
+    id: working-title
+    attributes:
+      label: Working title
+      description: Doesn't need to be final — the agent will clean it up.
+      placeholder: e.g. Why I switched my site to Astro
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: Rough notes, bullet points, a stream of consciousness — whatever you've got. Voice-to-text on mobile is fine.
+    validations:
+      required: true
+  - type: input
+    id: suggested-tags
+    attributes:
+      label: Suggested tags (optional)
+      description: Comma-separated. The agent will prefer reusing existing tags where they fit.
+      placeholder: e.g. astro, meta
+    validations:
+      required: false
+  - type: markdown
+    attributes:
+      value: |
+        When these notes are ready, replace the `wip` label with `post` to trigger the draft-post workflow. It will open a PR with a properly-formed draft (`draft: true`) for you to review.
