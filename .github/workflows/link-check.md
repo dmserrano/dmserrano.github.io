@@ -6,7 +6,9 @@ on:
 permissions:
   copilot-requests: write
 
-engine: copilot
+engine:
+  id: copilot
+  model: gpt-4.1
 
 network: defaults
 
