@@ -9,7 +9,8 @@ export const siteConfig = {
   shortTitle: 'dmserrano',
   author: 'Dominic Serrano',
   url: 'https://dominicserrano.com',
-  description: 'Personal site of Dominic Serrano.',
+  description:
+    "Senior Full Stack / Frontend Engineer with 9+ years of experience, React and TypeScript at the core. Most recently spent 4 years at FortyAU shipping production features across the stack and building real AI agent workflows — engineering systems where LLMs are a dependable part of the architecture.",
   socials: {
     github: { url: 'https://github.com/dmserrano', label: 'GitHub', icon: 'github' },
     linkedin: { url: 'https://www.linkedin.com/in/dominic-serrano/', label: 'LinkedIn', icon: 'linkedin' },
