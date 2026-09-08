@@ -71,7 +71,7 @@ referencing this issue already exists, and if so, do nothing.
    experiences that aren't implied by the notes.
 
 4. Create a new branch named `post/<slug>` (using the slug from step 3) and
-   add the new file at `content/posts/<slug>.md`.
+   add the new file at `src/content/posts/<slug>.md`.
 
 5. Open a pull request via the `create-pull-request` safe output:
    - Title: the post's title.
@@ -91,7 +91,7 @@ referencing this issue already exists, and if so, do nothing.
 - Never modify, close, or comment on any issue other than the one that
   triggered this run.
 - Never touch any file outside of the single new file you create under
-  `content/posts/`.
+  `src/content/posts/`.
 - If you cannot determine enough information to produce a coherent post
   (e.g. the issue body is empty), still open a PR with your best attempt
   rather than doing nothing — a human reviewing a rough draft is better
