@@ -1,0 +1,24 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { excludeDrafts } from '../lib/drafts';
+import { entrySlug } from '../lib/slugify';
+import { siteConfig } from '../lib/site';
+
+const posts = excludeDrafts(await getCollection('posts')).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+---
+
+<BaseLayout title="Home" description={siteConfig.description}>
+  <ul class="post-list">
+    {posts.map((post) => (
+      <li>
+        <a href={`/posts/${entrySlug(post.id, post.data.slug)}/`}>{post.data.title}</a>
+        <time datetime={post.data.date.toISOString()}>
+          {post.data.date.toISOString().slice(0, 10)}
+        </time>
+      </li>
+    ))}
+  </ul>
+</BaseLayout>
