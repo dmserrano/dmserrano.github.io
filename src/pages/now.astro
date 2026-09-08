@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const updated = 'sep 08 2026';
+
+const status = [
+  { key: 'reading', value: 'the fifth season by n. k. jemisin' },
+  { key: 'watching', value: 'silo and jack reacher' },
+  { key: 'building', value: 'studying the claude certified architect track and bulding agentic workflows' },
+  { key: 'outside', value: 'walking the doggo daily and some occasional pickleball' },
+];
+---
+
+<BaseLayout title="Now" description="What I'm up to right now.">
+  <div class="container section now-page">
+    <h1 class="section-heading">Now</h1>
+    <p class="now-updated">last updated: {updated}</p>
+    <div class="now-block">
+      {
+        status.map((s) => (
+          <div class="now-line">
+            <span class="now-key">{s.key}:</span> <span class="now-value">{s.value}</span>
+          </div>
+        ))
+      }
+      <div class="now-line now-cursor" aria-hidden="true">&gt; <span>_</span></div>
+    </div>
+  </div>
+</BaseLayout>

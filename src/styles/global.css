@@ -538,6 +538,46 @@ th {
    Responsive
    ========================================================================== */
 
+/* ==========================================================================
+   Now page: terminal-style status block
+   ========================================================================== */
+
+.now-updated {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin: -1rem 0 1.5rem;
+}
+
+.now-block {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: 1.5rem 1.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  line-height: 2;
+}
+
+.now-key {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.now-value {
+  color: var(--text-strong);
+}
+
+.now-cursor {
+  color: var(--muted);
+  margin-top: 0.4rem;
+}
+
+.now-cursor span {
+  animation: brand-blink 1.1s steps(1) infinite;
+}
+
 @media (max-width: 720px) {
   .hero-inner {
     grid-template-columns: 1fr;
