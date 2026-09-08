@@ -1,0 +1,21 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+}
+
+const { project } = Astro.props;
+---
+
+<article>
+  <a class="post-card" href={project.data.repoUrl} target="_blank" rel="noopener">
+    <h3>{project.data.title}</h3>
+    <p class="post-excerpt">{project.data.description}</p>
+    {project.data.stack.length > 0 && (
+      <div class="tag-list">
+        {project.data.stack.map((s) => <span class="tag">{s}</span>)}
+      </div>
+    )}
+  </a>
+</article>

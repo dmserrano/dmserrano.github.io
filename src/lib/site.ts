@@ -8,8 +8,10 @@ export const siteConfig = {
   title: 'Dominic Serrano',
   shortTitle: 'dmserrano',
   author: 'Dominic Serrano',
+  role: 'software developer / dog lover / coffee snob in denial',
   url: 'https://dominicserrano.com',
-  description: 'Personal site of Dominic Serrano.',
+  description:
+    "I get curious about something, build a small version of it, and usually learn more than I planned to.",
   socials: {
     github: { url: 'https://github.com/dmserrano', label: 'GitHub', icon: 'github' },
     linkedin: { url: 'https://www.linkedin.com/in/dominic-serrano/', label: 'LinkedIn', icon: 'linkedin' },
