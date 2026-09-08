@@ -1,4 +1,9 @@
 ---
+import '@fontsource-variable/inter';
+import '@fontsource-variable/jetbrains-mono';
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 import { siteConfig } from '../lib/site';
 
 interface Props {
@@ -7,30 +12,44 @@ interface Props {
 }
 
 const { title, description } = Astro.props;
+const canonical = new URL(Astro.url.pathname, siteConfig.url).toString();
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title} · Dominic Serrano</title>
+    <title>{title} · {siteConfig.author}</title>
     <meta name="description" content={description} />
+    <meta name="author" content={siteConfig.author} />
+    <link rel="canonical" href={canonical} />
     <link rel="icon" href="/favicon.ico" sizes="any" />
-    <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml" />
-    <link rel="stylesheet" href="/styles/site.css" />
+    <link rel="alternate" type="application/rss+xml" title={siteConfig.title} href="/feed.xml" />
+    <meta name="generator" content={Astro.generator} />
+
+    <meta property="og:site_name" content={siteConfig.title} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <!-- Theme: set before paint to avoid flash -->
+    <script is:inline>
+      const t = localStorage.getItem('theme');
+      const dark = t ? t === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+    </script>
   </head>
   <body>
-    <header>
-      <nav>
-        <a href="/">Dominic Serrano</a>
-      </nav>
-    </header>
+    <Header />
     <main>
       <slot />
     </main>
-    <footer>
-      <p>&copy; {siteConfig.author}</p>
-    </footer>
+    <Footer />
   </body>
 </html>

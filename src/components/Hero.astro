@@ -1,0 +1,29 @@
+---
+import Icon from './Icon.astro';
+import { siteConfig } from '../lib/site';
+
+interface Props {
+  avatar?: string;
+}
+
+const { avatar } = Astro.props;
+---
+
+<section class="hero container">
+  <div class="hero-inner">
+    <div>
+      <p class="hero-greeting">Hi, I'm</p>
+      <h1>{siteConfig.author}</h1>
+      <p class="hero-bio">{siteConfig.description}</p>
+      <div class="social-row">
+        {Object.values(siteConfig.socials).map((s) => (
+          <a class="social-link" href={s.url} target={s.url.startsWith('http') ? '_blank' : undefined} rel="noopener">
+            <Icon name={s.icon} size={16} />
+            {s.label}
+          </a>
+        ))}
+      </div>
+    </div>
+    {avatar && <img class="hero-avatar" src={avatar} alt={siteConfig.author} />}
+  </div>
+</section>
