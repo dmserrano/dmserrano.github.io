@@ -17,6 +17,10 @@ const { avatar } = Astro.props;
       <p class="hero-role">{siteConfig.role}</p>
       <p class="hero-bio">{siteConfig.description}</p>
       <div class="social-row">
+        <a class="social-link" href="/resume/">
+          <Icon name="file" size={16} />
+          Resume
+        </a>
         {Object.values(siteConfig.socials).map((s) => (
           <a class="social-link" href={s.url} target={s.url.startsWith('http') ? '_blank' : undefined} rel="noopener">
             <Icon name={s.icon} size={16} />
