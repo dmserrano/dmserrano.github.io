@@ -598,3 +598,32 @@ th {
     font-size: 0.9rem;
   }
 }
+
+/* Five nav links don't fit beside the brand on phones: give them their own row. */
+@media (max-width: 520px) {
+  :root {
+    --nav-h: 96px;
+  }
+
+  .site-header,
+  .nav {
+    height: auto;
+  }
+
+  .nav {
+    flex-wrap: wrap;
+    row-gap: 0.35rem;
+    padding-block: 0.6rem;
+  }
+
+  .nav-links {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0;
+  }
+
+  .nav-links a {
+    padding: 0.35rem 0.4rem;
+  }
+}
