@@ -21,6 +21,7 @@ export const projectSchema = z.object({
   title: z.string(),
   description: z.string(),
   repoUrl: z.string(),
+  articleUrl: z.string().optional(),
   stack: z.array(z.string()).default([]),
   date: z.coerce.date(),
   draft: z.boolean().default(false),

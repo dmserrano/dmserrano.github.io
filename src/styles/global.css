@@ -436,6 +436,14 @@ th {
 
 .post-excerpt { color: var(--muted); margin: 0.75rem 0 0; font-size: 0.95rem; }
 
+.project-links {
+  display: flex;
+  gap: 1.1rem;
+  margin-top: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+}
+
 .tag-list {
   display: flex;
   gap: 0.4rem;

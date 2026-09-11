@@ -6,16 +6,29 @@ interface Props {
 }
 
 const { project } = Astro.props;
+const { title, description, stack, repoUrl, articleUrl } = project.data;
+
+// Prefer the writeup when there is one; fall back to the repo.
+const primaryUrl = articleUrl ?? repoUrl;
+const primaryIsExternal = !articleUrl;
 ---
 
-<article>
-  <a class="post-card" href={project.data.repoUrl} target="_blank" rel="noopener">
-    <h3>{project.data.title}</h3>
-    <p class="post-excerpt">{project.data.description}</p>
-    {project.data.stack.length > 0 && (
-      <div class="tag-list">
-        {project.data.stack.map((s) => <span class="tag">{s}</span>)}
-      </div>
-    )}
-  </a>
+<article class="post-card">
+  <h3>
+    <a
+      href={primaryUrl}
+      target={primaryIsExternal ? '_blank' : undefined}
+      rel={primaryIsExternal ? 'noopener' : undefined}
+    >{title}</a>
+  </h3>
+  <p class="post-excerpt">{description}</p>
+  {stack.length > 0 && (
+    <div class="tag-list">
+      {stack.map((s) => <span class="tag">{s}</span>)}
+    </div>
+  )}
+  <div class="project-links">
+    {articleUrl && <a href={articleUrl}>Article</a>}
+    <a href={repoUrl} target="_blank" rel="noopener">Source</a>
+  </div>
 </article>
