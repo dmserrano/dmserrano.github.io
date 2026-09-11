@@ -9,10 +9,37 @@ import { siteConfig } from '../lib/site';
 interface Props {
   title: string;
   description: string;
+  /** Set for blog posts so the page advertises itself as an article. */
+  article?: {
+    publishedTime: Date;
+    tags: string[];
+  };
 }
 
-const { title, description } = Astro.props;
+const { title, description, article } = Astro.props;
 const canonical = new URL(Astro.url.pathname, siteConfig.url).toString();
+const ogImage = new URL(siteConfig.ogImage, siteConfig.url).toString();
+
+const schema = article
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'BlogPosting',
+      headline: title,
+      description,
+      datePublished: article.publishedTime.toISOString(),
+      keywords: article.tags.join(', '),
+      url: canonical,
+      image: ogImage,
+      author: { '@type': 'Person', name: siteConfig.author, url: siteConfig.url },
+    }
+  : {
+      '@context': 'https://schema.org',
+      '@type': 'WebSite',
+      name: siteConfig.title,
+      description: siteConfig.description,
+      url: siteConfig.url,
+      author: { '@type': 'Person', name: siteConfig.author, url: siteConfig.url },
+    };
 ---
 
 <!doctype html>
@@ -29,14 +56,28 @@ const canonical = new URL(Astro.url.pathname, siteConfig.url).toString();
     <meta name="generator" content={Astro.generator} />
 
     <meta property="og:site_name" content={siteConfig.title} />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={article ? 'article' : 'website'} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={`${siteConfig.title} — ${title}`} />
+    {article && (
+      <>
+        <meta property="article:published_time" content={article.publishedTime.toISOString()} />
+        <meta property="article:author" content={siteConfig.author} />
+        {article.tags.map((tag) => <meta property="article:tag" content={tag} />)}
+      </>
+    )}
 
-    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} is:inline />
 
     <!-- Theme: set before paint to avoid flash -->
     <script is:inline>

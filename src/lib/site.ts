@@ -12,6 +12,8 @@ export const siteConfig = {
   url: 'https://dominicserrano.com',
   description:
     "I get curious about something, build a small version of it, and usually learn more than I planned to.",
+  /** Site-wide social share card. Absolute-ised against `url` at render time. */
+  ogImage: '/og.png',
   socials: {
     github: { url: 'https://github.com/dmserrano', label: 'GitHub', icon: 'github' },
     linkedin: { url: 'https://www.linkedin.com/in/dominic-serrano/', label: 'LinkedIn', icon: 'linkedin' },

@@ -12,7 +12,7 @@ const { title, description, date, tags } = Astro.props;
 const dateFmt = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: 'numeric', timeZone: 'UTC' });
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} article={{ publishedTime: date, tags }}>
   <article class="container section">
     <header>
       <h1>{title}</h1>
