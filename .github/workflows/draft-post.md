@@ -65,10 +65,16 @@ referencing this issue already exists, and if so, do nothing.
      from the issue notes, even if the notes are thin. This must never be
      left as a placeholder — generate your best guess.
 
-   Expand the issue's rough notes into full post body content in Markdown,
-   underneath the frontmatter. Preserve the author's intent and voice as
-   much as possible from the notes; don't invent claims, facts, or
-   experiences that aren't implied by the notes.
+   If the issue's Notes field already holds finished prose — connected
+   paragraphs the author has written and edited, rather than fragments —
+   copy it underneath the frontmatter **verbatim**. Keep their wording,
+   sentence order, headings, links, and code blocks exactly as written.
+   Rewriting finished prose is the one thing this workflow must never do.
+
+   Only when the notes are genuinely rough (bullets, fragments, a couple of
+   sentences) should you expand them into full post body content in
+   Markdown, preserving the author's intent and voice; don't invent claims,
+   facts, or experiences that aren't implied by the notes.
 
 4. Create a new branch named `post/<slug>` (using the slug from step 3) and
    add the new file at `src/content/posts/<slug>.md`.
