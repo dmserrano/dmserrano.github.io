@@ -35,11 +35,6 @@ referencing this issue already exists, and if so, do nothing.
 
 ## Instructions
 
-<!-- The issue text is injected below, already sanitized by the activation
-     job. Run 34676510609 failed because this step said "read the issue" with
-     no mechanism: the agent tried `gh api`, which is unauthenticated in the
-     sandbox, then gave up and invented placeholder content. -->
-
 1. The triggering issue's title and body are below. Do not fetch them.
 
    <issue>
@@ -112,21 +107,13 @@ referencing this issue already exists, and if so, do nothing.
   (e.g. the issue body is empty), still open a PR with your best attempt
   rather than doing nothing — a human reviewing a rough draft is better
   than silence, and the PR review step exists precisely to catch this.
-
-<!-- The rest of this section is from run 34676510609: the agent reached for
-     an unauthenticated CLI, then faked its safe outputs as files on disk
-     (including a `noop.txt`), so the run produced none and failed. -->
-
 - For any GitHub read, use the `github` MCP tools. Never `gh api`, `gh issue`,
   or `gh pr` — the `gh` CLI is unauthenticated here and will fail.
-
-- Safe outputs are tool calls, not files. Writing `pr-body.md` or `noop.txt`
-  to disk does nothing. Every run must end in at least one safe-output tool
-  call: `create_pull_request`, `add_comment`, `missing_data`, or `noop`.
-
+- Safe outputs are tool calls, not files — writing the payload to disk does
+  nothing. Every run must end in at least one of `create_pull_request`,
+  `add_comment`, `missing_data`, or `noop`.
 - If a read you need fails, call `missing_data` (or `noop`) explaining what
   was unavailable. Do not substitute placeholder content for real issue text.
-
 - Do not `git push`. The `create_pull_request` tool pushes the branch; the
   token here cannot, so the attempt only wastes a turn.
 
