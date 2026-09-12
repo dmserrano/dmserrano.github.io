@@ -1,19 +1,13 @@
 #!/usr/bin/env bash
-# Grammar/mechanics check for post prose, using harper (brew install harper).
+# harper prose check for posts. Advisory; not in the build.
 #
-# harper-cli takes no config file, so the house rules live here:
-#   UseTitleCase       - headings on this site are sentence case by design
-#   SplitWords         - wants "front matter"; Astro's own docs write "frontmatter"
-#   DisjointPrefixes   - wants "preexisting" over "pre-existing"
+# Ignored rules: UseTitleCase (headings are sentence case), SplitWords ("front
+# matter"), DisjointPrefixes ("preexisting"). harper-cli reads no config file.
 #
-# Project vocabulary (gh, aw, cli, md, frontmatter, Astro, ...) lives in the user
-# dictionary at "~/Library/Application Support/harper-ls/dictionary.txt". Add a
-# term there rather than widening the ignore list. Lowercase an entry unless the
-# term is only ever uppercase: an uppercase-only entry makes the lowercase form
-# a spelling error.
+# Vocabulary goes in ~/Library/Application Support/harper-ls/dictionary.txt,
+# lowercase — an uppercase-only entry breaks the lowercase form.
 #
-# Usage: scripts/lint-prose.sh src/content/posts/some-post.md [more.md ...]
-#        scripts/lint-prose.sh            # every post in the collection
+# Usage: scripts/lint-prose.sh [file ...]   (no args = all of src/content)
 set -euo pipefail
 
 if ! command -v harper-cli >/dev/null 2>&1; then
@@ -39,5 +33,5 @@ if [ "${#files[@]}" -eq 0 ]; then
   exit 0
 fi
 
-# harper exits non-zero when it finds anything; it is advisory, so report and pass.
+# harper exits non-zero on any lint; advisory, so pass.
 harper-cli --no-color lint "${IGNORE[@]}" "${files[@]}" || true

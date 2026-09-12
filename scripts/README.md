@@ -17,20 +17,17 @@ Then re-check the preview with LinkedIn's Post Inspector, which caches aggressiv
 
 ## lint-prose.sh
 
-Runs [harper](https://writewithharper.com) over post markdown for mechanics —
-closed compounds, Oxford commas, hyphenation, long sentences. Advisory only; it
-is not wired into the build.
+[harper](https://writewithharper.com) over post markdown — compounds, commas,
+hyphenation, long sentences. Advisory; not in the build.
 
 ```
 brew install harper
-scripts/lint-prose.sh                  # every post in src/content
+scripts/lint-prose.sh                  # all of src/content
 scripts/lint-prose.sh path/to/post.md  # one file
 ```
 
-Harper is fast and local but has no model behind it: it is strong on compounds
-and commas, and blind to tense, naming, and wrong-word errors ("interesting
-about" for "interested in"). Treat a clean run as necessary, not sufficient.
+No model behind it: blind to tense, naming, and wrong words ("interesting about"
+for "interested in"). Clean run is necessary, not sufficient.
 
-Project vocabulary lives in the user dictionary at
-`~/Library/Application Support/harper-ls/dictionary.txt`; the ignored rules and
-the reason for each are documented at the top of the script.
+Vocabulary lives in `~/Library/Application Support/harper-ls/dictionary.txt`.
+Ignored rules are listed at the top of the script.
