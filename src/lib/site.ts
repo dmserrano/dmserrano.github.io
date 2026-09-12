@@ -11,7 +11,7 @@ export const siteConfig = {
   role: 'software developer / dog lover / coffee snob in denial',
   url: 'https://dominicserrano.com',
   description:
-    "I get curious about something, build a small version of it, and usually learn more than I planned to.",
+    "Software engineer, 9 years in. I build tools that make developers' lives easier — currently working on making agentic workflows reliable, affordable, and safe.",
   /** Site-wide social share card. Absolute-ised against `url` at render time. */
   ogImage: '/og.png',
   socials: {
