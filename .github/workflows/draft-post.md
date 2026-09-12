@@ -57,9 +57,12 @@ referencing this issue already exists, and if so, do nothing.
      If the title doesn't slugify to anything usable (empty string), fall
      back to `post-<issue-number>`.
    - `tags`: prefer tags already present in the vocabulary from step 2 that
-     match the post's actual content/the issue's suggested tags. You may
-     propose at most one new tag if nothing existing genuinely fits — don't
-     invent multiple new tags in one post.
+     match the post's actual content/the issue's suggested tags. The
+     vocabulary is still bootstrapping: while it holds fewer than eight
+     tags, propose as many new ones as the post genuinely needs, up to
+     three per post. Past that, propose at most one new tag per post and
+     only when nothing existing fits. Prefer the issue's suggested tags
+     over inventing your own, and keep tags lowercase and hyphenated.
    - `draft`: always `true`. Never generate a post with `draft: false`.
    - `description`: a best-effort one-to-two sentence summary generated
      from the issue notes, even if the notes are thin. This must never be
