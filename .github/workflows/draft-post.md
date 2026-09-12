@@ -35,9 +35,14 @@ referencing this issue already exists, and if so, do nothing.
 
 ## Instructions
 
-1. Read the triggering issue's title and body (it was filed using the
-   `post` issue template: a rough working title, freeform notes, and an
-   optional "suggested tags" field).
+1. The triggering issue's title and body are below. Do not fetch them.
+
+   <issue>
+   ${{ steps.sanitized.outputs.text }}
+   </issue>
+
+   It was filed using the `post` issue template: a rough working title,
+   freeform notes, and an optional "suggested tags" field.
 
 2. Read the frontmatter of every file under `src/content/posts/*.md` in
    this repository to build the current tag vocabulary — the full set of
@@ -102,6 +107,15 @@ referencing this issue already exists, and if so, do nothing.
   (e.g. the issue body is empty), still open a PR with your best attempt
   rather than doing nothing — a human reviewing a rough draft is better
   than silence, and the PR review step exists precisely to catch this.
+- For any GitHub read, use the `github` MCP tools. Never `gh api`, `gh issue`,
+  or `gh pr` — the `gh` CLI is unauthenticated here and will fail.
+- Safe outputs are tool calls, not files — writing the payload to disk does
+  nothing. Every run must end in at least one of `create_pull_request`,
+  `add_comment`, `missing_data`, or `noop`.
+- If a read you need fails, call `missing_data` (or `noop`) explaining what
+  was unavailable. Do not substitute placeholder content for real issue text.
+- Do not `git push`. The `create_pull_request` tool pushes the branch; the
+  token here cannot, so the attempt only wastes a turn.
 
 ## Notes
 
