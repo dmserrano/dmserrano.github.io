@@ -3,7 +3,7 @@ title: Using GitHub Agentic Workflows to publish blog posts
 date: 2026-09-12
 slug: using-github-agentic-workflows-to-publish-blog-posts
 tags: [meta, github-actions, github, agentic-workflow]
-draft: true
+draft: false
 description: This post describes how I rebuilt my website with Astro and automated blog publishing using GitHub Agentic Workflows, highlighting the ease of setup, security, and developer experience improvements over traditional CI/CD pipelines.
 ---
 
