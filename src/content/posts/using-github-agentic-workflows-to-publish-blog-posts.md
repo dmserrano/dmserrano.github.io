@@ -7,7 +7,7 @@ draft: false
 description: This post describes how I rebuilt my website with Astro and automated blog publishing using GitHub Agentic Workflows, highlighting the ease of setup, security, and developer experience improvements over traditional CI/CD pipelines.
 ---
 
-I rebuilt my website with [Astro]((astro.build/redacted) this week. It was woefully outdated in both content and styling.
+I rebuilt my website with [Astro](https://astro.build) this week. It was woefully outdated in both content and styling.
 
 But that wasn't the reason. I wanted to be able to draft a blog post from my phone and have the page generate without me.
 
@@ -17,7 +17,7 @@ I had recently stumbled on GitHub Agentic Workflows (the `gh aw` CLI extension) 
 
 It held up. A `gh aw` workflow is a Markdown file, with configuration in frontmatter and instructions in plain English. The agent runs read-only, can only open a PR for me to review, and the blog pipeline was working the same day.
 
-The site rebuild was completely spec-driven. I used [mattpocock-skills:to-spec]((www.aihero.dev/redacted) to create a PRD with the project context and then used an agent to break that into tickets.
+The site rebuild was completely spec-driven. I used [mattpocock-skills:to-spec](https://www.aihero.dev/skills-to-spec) to create a PRD with the project context and then used an agent to break that into tickets.
 
 The main dev process took a few hours, with about 10 PRs. I had agents build the site from the tickets that were created from the PRD. I QA'd the changes on my local dev server while manually reviewing the small feature PRs.
 
@@ -96,7 +96,7 @@ By design, each agent job runs with [read-only permissions](https://github.githu
 
 For my personal site, the agent can read the codebase, issues, and existing PRs. Only admins, maintainers, or people with write access can trigger the workflow, though; for anyone else, the run stops before the agent job.
 
-If the job passes all verification steps, the job is then passed off to the ["safe output"](https://github.github.com/gh-aw/reference/safe-outputs/) step, which handles the writing execution. There is a configurable permission system for each write: issues, comments, PRs.
+If the job passes all verification steps, the job is then passed off to the [safe output](https://github.github.com/gh-aw/reference/safe-outputs/) step, which handles the writing execution. There is a configurable permission system for each write: issues, comments, PRs.
 
 With all that in place, the most an outsider can do is open an issue or a PR from a fork — neither one starts the agent. And the last guardrail is that all merges must be manually approved by me.
 

@@ -464,7 +464,10 @@ th {
 
 .tag:hover { color: var(--accent); border-color: var(--accent); }
 
-.prose { max-width: 70ch; }
+.prose { 
+  margin-top: 1rem;
+  max-width: 70ch; 
+}
 
 .prose h2, .prose h3 {
   margin-top: 2rem;

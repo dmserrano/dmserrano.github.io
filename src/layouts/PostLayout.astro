@@ -15,7 +15,7 @@ const dateFmt = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'shor
 <BaseLayout title={title} description={description} article={{ publishedTime: date, tags }}>
   <article class="container section">
     <header>
-      <h1>{title}</h1>
+      <h2>{title}</h2>
       <div class="post-meta">
         <time datetime={date.toISOString()}>{dateFmt.format(date)}</time>
       </div>
