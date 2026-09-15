@@ -14,11 +14,13 @@ interface Props {
     publishedTime: Date;
     tags: string[];
   };
+  /** Site-relative share card path; defaults to the site-wide card. */
+  ogImage?: string;
 }
 
 const { title, description, article } = Astro.props;
 const canonical = new URL(Astro.url.pathname, siteConfig.url).toString();
-const ogImage = new URL(siteConfig.ogImage, siteConfig.url).toString();
+const ogImage = new URL(Astro.props.ogImage ?? siteConfig.ogImage, siteConfig.url).toString();
 
 const schema = article
   ? {
