@@ -6,13 +6,15 @@ interface Props {
   description: string;
   date: Date;
   tags: string[];
+  /** Site-relative path to this post's share card. */
+  ogImage?: string;
 }
 
-const { title, description, date, tags } = Astro.props;
+const { title, description, date, tags, ogImage } = Astro.props;
 const dateFmt = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: 'numeric', timeZone: 'UTC' });
 ---
 
-<BaseLayout title={title} description={description} article={{ publishedTime: date, tags }}>
+<BaseLayout title={title} description={description} article={{ publishedTime: date, tags }} ogImage={ogImage}>
   <article class="container section">
     <header>
       <h2>{title}</h2>

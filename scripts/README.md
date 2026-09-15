@@ -2,7 +2,10 @@
 
 ## og-image.html
 
-Source for `public/og.png`, the site-wide social share card (1200x630).
+Source for `public/og.png`, the site-wide social share card (1200x630). Blog
+posts don't use it: each gets its own card with the post title, generated at
+build time by `src/pages/og/[...slug].png.ts` (served at `/og/<slug>.png`).
+Keep the two designs in sync.
 
 It is not part of the build — the PNG is committed. Regenerate after editing:
 

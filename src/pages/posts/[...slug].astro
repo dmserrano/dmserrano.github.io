@@ -21,6 +21,7 @@ const { Content } = await render(post);
   description={post.data.description}
   date={post.data.date}
   tags={post.data.tags}
+  ogImage={`/og/${Astro.params.slug}.png`}
 >
   <Content />
 </PostLayout>
